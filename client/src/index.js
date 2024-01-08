@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
 import BotMessage from "./components/BotMessage";
 import UserMessage from "./components/UserMessage";
@@ -19,7 +19,7 @@ function Chatbot() {
       setMessages([
         <BotMessage
           key="0"
-          fetchMessage={async () => await API.GetChatbotResponse("default")}
+          fetchMessage={async () => await API.GetChatbotResponse("hi")}
         />
       ]);
     }
@@ -46,5 +46,6 @@ function Chatbot() {
   );
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<Chatbot />, rootElement);
+const root = ReactDOM.createRoot(document.getElementById('root')); // Replace 'root' with the actual ID of your root element
+
+root.render(<Chatbot />);
